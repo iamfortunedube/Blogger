@@ -15,6 +15,10 @@ namespace Blogger.Controllers
             return View();
         }
 
+        public ActionResult LoadAll()
+        {
+            return View();
+        }
         public ActionResult Create()
         {
             return View();
@@ -87,6 +91,7 @@ namespace Blogger.Controllers
                 return View();
             }
         }
+
         public ActionResult Generic()
         {
             return View();

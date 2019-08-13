@@ -6,20 +6,29 @@
 @using (var ctx = new ApplicationDbContext())
 {
     var blog = ctx.Blogs.Find(Convert.ToInt32(Url.RequestContext.RouteData.Values["id"]));
-
-    <h1 class="text-center">
-        @blog.Title
-    </h1>
-
-    <h6 class="text-center">
-        Author | @blog.Author
-    </h6>
-
     <div class="container">
-        @blog.Body
+        <div class="row" style="margin-top: 50px;">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="text-center">@blog.Title</h1>
+                    <div class="row">
+                        <h4 style="margin-left:20px;">Date: @blog.DateTime</h4>
+                        <h4 style="float:right; margin-right: 50px; margin-top: -30px;">Author: @blog.Author</h4>
+                    </div>
+                    <div class="row">
+                        <h4 style="margin-left:20px;">Tags: @blog.Tags</h4>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    @blog.Body
+                </div>
+
+                <div class="panel-footer">
+                    @Html.ActionLink("<< Back", "Index")
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+    
 }
 

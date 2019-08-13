@@ -1,0 +1,46 @@
+﻿@using Blogger.Models
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (var ctx = new ApplicationDbContext())
+{
+    <div class="container">
+        <div class="row">
+            <h2>Blog Feed</h2>
+        </div>
+
+        <div class="block">
+            <div class="row">
+                <div class="col-xs-12 col-md-8">
+                    @foreach (var blog in ctx.Blogs)
+                    {
+                        <div class="span4">
+
+                            <img class="img-left" style="float: left; margin-right: 15px; width: 24rem; border-radius: 5px;" src="http://assets.barcroftmedia.com.s3-website-eu-west-1.amazonaws.com/assets/images/recent-images-11.jpg" />
+                            <div class="content-heading"><h3>@blog.Title</h3></div>
+                            <p>
+                                @blog.Body
+                            </p>
+                            <a class="btn btn-default" href="@Url.Action("Generic", "Blog", new { @id = blog.Id })">
+                                View Post
+                            </a>
+                            <a class="btn btn-success" href="@Url.Action("Edit", "Blog", new { @id = blog.Id })">
+                                Edit
+                            </a>
+                            <a class="btn btn-warning" href="@Url.Action("Delete", "Blog", new { @id = blog.Id })">
+                                Delete
+                            </a>
+                        </div>
+                    }
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                    <a class="twitter-timeline" data-height="2500" data-theme="dark" href="https://twitter.com/TwitterDev/lists/national-parks?ref_src=twsrc%5Etfw">A Twitter List by TwitterDev</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
