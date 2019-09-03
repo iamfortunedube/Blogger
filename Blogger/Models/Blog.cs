@@ -11,19 +11,19 @@ namespace Blogger.Models
         [Required]
         public int Id { get; set; }
 
-        [Required, StringLength(50)]
+        [Required, Display(Name = "Enter Title"), StringLength(50)]
         public string Title { get; set; }
 
         [Required, StringLength(50)]
         public string DateTime { get; set; }
 
-        [Required, StringLength(50)]
+        [Required, Display(Name = "Enter author's name"), StringLength(50)]
         public string Author { get; set; }
 
-        [Required, StringLength(50)]
+        [Required, Display(Name = "Enter atleast 1 tag"), StringLength(50)]
         public string Tags { get; set; }
 
-        [Required]
+        [Required, Display(Name = "Enter Your Content")]
         public string Body { get; set; }
     }
 }
